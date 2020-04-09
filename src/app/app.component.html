@@ -1,0 +1,55 @@
+
+<nav class="navbar navbar-expand-lg navbar-light navigationbar" *ngIf="currentUser" >
+  <div class="container">
+    <a href="#" class="navbar-brand"><img class="brandlogo" src="../assets/home/hellofood.png"></a>
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-toggle="collapse" 
+        data-target="#navbarResponsive" 
+        aria-controls="navbarResponsive" 
+        aria-expanded="false"
+        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav nav-color ml-auto" >  
+              <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="setTitle( 'Hellofood | Home')">Home</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/product" routerLinkActive="active" (click)="setTitle( 'Hellofood | Products')">Product</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/restaurants" routerLinkActive="active" *ngIf="currentUser" (click)="setTitle( 'Hellofood | Restaurants')">Restaurants</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/check-out" routerLinkActive= "active" *ngIf="currentUser" (click)="setTitle( 'Hellofood | Checkout')">Checkout</a></li>
+              <li class="nav-item"><a class="nav-link " routerLink="/cart" routerLinkActive= "active" (click)="setTitle( 'Hellofood | Cart')"><i class="fas fa-cart-plus icon" *ngIf="currentUser"></i></a></li>
+              <li class="nav-item"><a class="nav-link">|</a></li>
+              <li class="nav-item"><strong><a class="nav-link" routerLink="/login" routerLinkActive= "active" *ngIf="!currentUser" >Login</a></strong></li>
+              <li class="nav-item"><strong><a class="nav-link" routerLink="/" routerLinkActive= "active" *ngIf="currentUser" (click)="logout()" (click)="setTitle( 'Hellofood | Login')">Logout</a></strong></li>
+          </ul>
+      </div>
+      <div>
+      </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<footer class="page-footer font-small indigo" *ngIf="currentUser" @fade>
+  <div class="container"  @fade>
+    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+      <div class="col-md-2 mb-3">
+        <a href="#" class="navbar-brand"><img class="brandlogoFooter" src="../assets/home/hellofood.png"></a>
+      </div>
+    </div>
+    <hr class="rgba-white-light" style="margin: 0 15%;">
+    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+      <div class="col-md-8 col-12 mt-5">
+        <p style="line-height: 1.7rem">
+          Many people do not grow their own food. 
+          They have to buy food that was grown by someone else. 
+          People buy most of their food in shops or markets. 
+          But some people still grow most or all of their own food.
+          People may buy food and take it home to cook it. 
+          They may buy food that is ready to eat from a street vendor or a restaurant.
+          </p>
+      </div>
+    </div>
+    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+  </div>
+
+</footer>
+
+

@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Categories</h4>
+        <ul>
+            <li><a (click)="showAllProducts()">All</a></li>
+
+            <li (click)="onSelect(productMenu.id)" *ngFor="let productMenu of productsMenu">{{productMenu.name}}</li>
+            
+        </ul>
+        </div>
+</div>

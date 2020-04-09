@@ -1,0 +1,15 @@
+<div class="quickShop">
+    <div>
+        <h4>Quick shop</h4>
+    </div>
+    <hr>
+    <div>
+        <input #searchBar 
+                class="fadeIn second form-control my-2 " 
+                placeholder="Seach by product title" 
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Seach by produt title'" 
+                (keyup.enter)="onSelect(searchBar.value)">
+    </div>
+</div>
+<hr>

@@ -1,0 +1,65 @@
+<div class="container" @fade>
+    <div class="row">
+        <div class="col-md-12">   
+            <h5>Restaurants List</h5>
+            <button class="btn btn-success btn-sm" style="float:right;" title="Create new restaurant" routerLink="/restaurants/create" routerLinkActive="active">Create</button>
+        </div>
+    </div>
+</div>
+<div class="container my-5" @fade>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="">
+                <div class="table100 ver2 m-b-110">
+                  <div class="table100-head">
+                    <table>
+                      <thead>
+                        <tr class="row100 head">
+                          <th class="cell100 column0">ID</th>
+                          <th class="cell100 column1">Name</th>
+                          <th class="cell100 column2">Email</th>
+                          <th class="cell100 column3">Phone</th>
+                          <th class="cell100 column5">Address</th>
+                          <th class="cell100 column3">Specification</th>
+                          <th class="cell100 column4">Contact Pref.</th>
+                          <th class="cell100 column4">Rest. Type</th>
+                          <th class="cell100 column6">Action</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                  <div class="table100-body js-pscroll">
+                    <table>
+                      <tbody *ngFor="let restList of restaurants"  @fade>                        
+                        <tr class="row100 body">
+                          <td class="cell100 column0">{{ restList.id }}</td>
+                          <td class="cell100 column1">{{ restList.name }}</td>
+                          <td class="cell100 column2">{{ restList.email }}</td>
+                          <td class="cell100 column3">{{ restList.phone }}</td>
+                          <td class="cell100 column5">{{ restList.address }}</td>
+                          <td class="cell100 column3">{{ restList.specification }}</td>
+                          <td class="cell100 column4">{{ restList.contactPreference }}</td>
+                          <td class="cell100 column4">{{ restList.checkArray }}</td>
+                          <td class="cell100 column6">
+                                          <button 
+                                            class="btn btn-outline-default btn-sm mx-2" 
+                                            (click)="edit(restList.id)"><i class="fas fa-edit"></i></button>
+                                          <button 
+                                            class="btn btn-outline-default btn-sm"
+                                            (click)="removeRest(restList.id)">
+                                              <i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="restaurants.length === 0" class="noRestaurants" @fade>
+  <img class="img-fluid" src="../../assets/restaurants/exclamation.png" alt="">
+  <h4 >No restaurants</h4>
+</div>
+

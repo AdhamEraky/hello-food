@@ -1,0 +1,115 @@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+    <div class="fadeIn first" >
+        <strong>Check Out</strong>
+    </div>
+      <!-- Login Form -->
+    <form [formGroup]="registrationForm" (ngSubmit)="onRegisterSubmit()">
+        <div class="form-group"> 
+            <input 
+                [class.is-invalid]="fullName.invalid && fullName.touched"            
+                type="text" 
+                class="fadeIn second form-control" 
+                formControlName="fullName" 
+                placeholder="Full name">
+            <div *ngIf="fullName.invalid && fullName.touched">
+                <small *ngIf="fullName.hasError('required')" class="text-danger">Full name is required</small>
+                <small *ngIf="fullName.hasError('minlength')" class="text-danger">Full name shoud be at least 4  characters</small>
+                <small *ngIf="fullName.hasError('forbiddenName')" class="text-danger">{{ fullName.errors?.forbiddenName.value }} Username is not allowed</small>
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <input 
+                [class.is-invalid]="email.invalid && email.touched"            
+                type="text" 
+                class="fadeIn second form-control" 
+                formControlName="email" 
+                placeholder="Email">
+            <div *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.hasError('required')" class="text-danger">Email is required</small>
+                <small *ngIf="email.hasError('minlength')" class="text-danger">Email shoud be at least 15 characters</small>
+                <small *ngIf="email.hasError('pattern')" class="text-danger">Email shoud contain @ characters</small>
+            </div>
+         </div>
+         <div class="form-group radioContainer">
+            <div class="input-group">
+                <label class="label fadeIn second"><strong>Gender</strong></label>
+                <div class="p-t-10" *ngFor="let option of genderType">
+                    <label class="radio-container m-r-45 fadeIn second" >{{option}}
+                        <input 
+                            
+                            [class.is-invalid]="gender.invalid && gender.touched"
+                            formControlName="gender"
+                            type="radio"
+                            value="{{option}}">
+                        <span class="checkmark "></span>
+                    </label>
+                   
+                </div> 
+                <div *ngIf="gender.invalid && gender.touched">
+                    <small *ngIf="gender.hasError('required')" class="text-danger">Gender is required</small>
+                </div>
+            </div>
+         </div>
+         <div class="form-group">
+            <input 
+            [class.is-invalid]="birthdate.invalid && birthdate.touched"            
+            type="date"     
+            formControlName="birthdate" 
+            class="fadeIn second form-control"
+            placeholder="Birthdate">
+            <div *ngIf="birthdate.invalid && birthdate.touched">
+                <small *ngIf="birthdate.hasError('required')" class="text-danger">Birthdate is required</small>
+            </div>
+         </div>
+         <div class="form-group">
+             <label class="mx-3 fadeIn second"><strong>Country:</strong></label>
+             <select 
+                class="browser-default custom-select custom-select-sm fadeIn second"
+                formControlName="country">
+                <option value="" disabled selected >...Choose your country</option>
+                <option *ngFor = "let option of countries">{{option}}</option>
+            </select>
+         </div>
+         <div class="form-group">
+             <input 
+                [class.is-invalid]="phone.invalid && phone.touched" 
+                type="text" 
+                formControlName="phone" 
+                pattern="^((\+){1}20){1}[1-9]{1}[0-9]{9}$"
+                class="fadeIn second form-control"
+                placeholder="Mobile No.">
+            <div *ngIf="phone.invalid && phone.touched">
+                <small *ngIf="phone.hasError('required')" class="text-danger">Mobile No. is required</small>
+                <small *ngIf="phone.hasError('pattern')" class="text-danger">Mobile No. should be at least 11 numbers with egyptian key</small>
+            </div>
+
+         </div>
+        <div class="form-group">
+            <input 
+                [class.is-invalid]="address.invalid && address.touched"
+                type="text" 
+                class="fadeIn third form-control" 
+                formControlName="address" 
+                placeholder="Address">
+                <div *ngIf="address.invalid && address.touched">
+                    <small *ngIf="address.hasError('required')" class="text-danger">City name is required</small>
+                    <small *ngIf="address.hasError('minlength')" class="text-danger">City name shoud be at least 10  characters</small>
+                </div>
+        </div>
+            <input
+            [disabled] ="!registrationForm.valid"
+            type="submit" 
+            class="fadeIn fourth" 
+            value="Submit">
+    </form>
+
+    </div>
+</div>
+  

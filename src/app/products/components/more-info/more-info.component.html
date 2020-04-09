@@ -1,0 +1,93 @@
+<div class="container header">
+    <a routerLink="/product" class="backToProduct"><small>Products</small></a>
+
+</div>
+<div class="container first" @fade>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <h4 class="card-title">{{showedProduct.title}}</h4>
+            <h5>Description</h5>
+            <p>{{showedProduct.description}}</p>
+            <p class="price"><strong>Category: </strong>{{showedProduct.categoryTitle}}</p>
+
+            <form>
+                <div class="stars">
+                    <input type="radio" name="star" class="star-1" id="star-1" />
+                    <label class="star-1" for="star-1">1</label>
+                    <input type="radio" name="star" class="star-2" id="star-2" />
+                    <label class="star-2" for="star-2">2</label>
+                    <input type="radio" name="star" class="star-3" id="star-3" />
+                    <label class="star-3" for="star-3">3</label>
+                    <input type="radio" name="star" class="star-4" id="star-4" />
+                    <label class="star-4" for="star-4">4</label>
+                    <input type="radio" name="star" class="star-5" id="star-5" />
+                    <label class="star-5" for="star-5">5</label>
+                    <span></span>
+                </div>
+            </form>
+<!--             
+            <br>
+            <p class="price"><strong>Price: </strong>{{showedProduct.price}}</p>
+            <hr>
+            <p class="price"><strong>Product ID: </strong>{{showedProduct.id}}</p>
+            <hr>
+ -->
+            <div class="container info">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="ui statistic">
+                                <div class="value priceValue">
+                                 {{ showedProduct.price | currency:"USD"}}
+                                </div>
+                                <div class="label">
+                                    <small>Price</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="ui statistic">
+                                <div class="value">
+                                 {{ showedProduct.ingredients }}
+                                </div>
+                                <div class="label">
+                                    Ingredients
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="ui statistic">
+                                <div class="value">
+                                 {{ showedProduct.calories }}
+                                </div>
+                                <div class="label">
+                                    Calories
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5 rightSide">
+            <img class="img-fluid" src="{{showedProduct.img}}">
+
+        </div>
+    </div>
+    <br><br>
+    <hr>
+    <br><br>
+<app-questions></app-questions>
+    
+    
+    
+
+

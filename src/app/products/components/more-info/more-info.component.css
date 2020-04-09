@@ -1,0 +1,56 @@
+.card-title{
+    font-family: 'Exo' , sans-serif;
+    font-weight: 700;
+    color :#918c86;
+    font-size: 50px;
+
+}
+
+.first{
+    padding-top:20px;
+}
+
+.card
+{
+    border-radius: 15px;
+    padding-top: 30px;;
+    text-align: center;
+    /* padding: 10px; */
+    padding-bottom: 30px;
+}
+
+.value{
+    font-family: 'Exo' , sans-serif;
+    font-size: 40px;
+
+}
+
+.info{
+    margin-top: 30px;
+}
+.img-fluid{
+    border:0;
+    border-radius: 20px;
+    width: 100%;
+}
+.backToProduct{
+    Color:#aca49c;
+    font-size: 22px;
+    text-decoration: none;
+}
+.header{
+    margin-top: 20px;
+
+}
+.priceValue{
+    color:red;
+}
+app-questions{
+    font-family: 'Exo', sans-serif;
+}
+
+small:hover {
+    color:black;
+}
+
+

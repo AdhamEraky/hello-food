@@ -1,0 +1,110 @@
+<div class="container" @fade>
+    <h5>Edit Restaurant</h5>
+  
+      <form [formGroup]="theForm" (ngSubmit)="save()" class="my-5">
+        <div class="form-group">
+          <label><strong>Restaurant name:</strong></label>
+          <input
+          [class.is-invalid]="name.invalid && name.touched"
+          type="text" 
+            formControlName="name" 
+            class="form-control">
+            <div *ngIf="name.invalid && name.touched">
+              <small *ngIf="name.hasError('required')" class="text-danger">Restaurant name is required</small>
+              <small *ngIf="name.hasError('minlength')" class="text-danger">Restaurant name shoud be at least 4  characters</small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+          <label><strong>Restaurant email:</strong></label>
+          <input
+            [class.is-invalid]="email.invalid && email.touched"
+            type="text"
+            formControlName="email"
+            class="form-control">
+            <div *ngIf="email.invalid && email.touched">
+              <small *ngIf="email.hasError('required')" class="text-danger">Email is required</small>
+              <small *ngIf="email.hasError('minlength')" class="text-danger">Email shoud be at least 15 characters</small>
+              <small *ngIf="email.hasError('pattern')" class="text-danger">Email shoud contain @ characters</small>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Mobile number:</strong></label>
+          <input
+          [class.is-invalid]="phone.invalid && phone.touched"
+            type="text" 
+            formControlName="phone"
+            pattern="^((\+){1}20){1}[1-9]{1}[0-9]{9}$"
+            class="form-control">
+          <div *ngIf="phone.invalid && phone.touched">
+              <small *ngIf="phone.hasError('required')" class="text-danger">Mobile number is required</small>
+              <small *ngIf="phone.hasError('pattern')" class="text-danger">Mobile number should be at least 11 numbers with egyptian key</small>
+          </div>
+        </div>
+  
+        <div class="form-group">
+            <label><strong>Address:</strong></label>
+            <input 
+            [class.is-invalid]="address.invalid && address.touched"
+            type="text" 
+            formControlName="address" 
+            class="form-control">
+          <div *ngIf="address.invalid && address.touched">
+              <small *ngIf="address.hasError('required')" class="text-danger">City name is required</small>
+              <small *ngIf="address.hasError('minlength')" class="text-danger">City name shoud be at least 10  characters</small>
+          </div>
+        </div>
+
+        <div>
+          <label><strong>Specification:</strong></label>
+          <select 
+              [class.is-invalid]="specification.invalid && specification.touched"
+              class="browser-default custom-select custom-select-sm my-4"
+              formControlName="specification">
+                  <option value="" disabled >...Choose your Specification</option>
+                  <option *ngFor = "let option of specifications" [ngValue]="option">{{option}}</option>
+            </select>
+            <div *ngIf="specification.invalid && specification.touched" >
+              <small *ngIf="specification.hasError('required')" class="text-danger">Specification is required</small>
+            </div>
+       </div>
+
+        <div >
+            <label><strong>Restaurant Type:</strong></label>
+            <div *ngFor = "let option of restaurantTypes">
+              <input 
+                [class.is-invalid]="restaurantType.invalid && restaurantType.touched"
+                type="checkbox"
+                formControlName="restaurantType"
+                class="mx-3 my-2">{{option}}
+              </div>
+            <div *ngIf="restaurantType.invalid && restaurantType.touched" >
+              <small *ngIf="restaurantType.hasError('required')" class="text-danger">Restaurant Type is required</small>
+            </div>
+        </div>
+
+        <div>
+            <label><strong>Contact Preference:</strong></label>
+                <div class="input-group">
+                    <div class="p-t-10" *ngFor="let option of preference">
+                        <label class="radio-container m-r-45">{{option}}
+                            <input 
+                              [class.is-invalid]="contactPreference.invalid && contactPreference.touched"
+                              formControlName="contactPreference"
+                              type="radio" 
+                              value="{{option}}">
+                            <span class="checkmark"></span> 
+
+                        </label>
+                    </div>
+                    <div *ngIf="contactPreference.invalid && contactPreference.touched" >
+                      <small *ngIf="contactPreference.hasError('required')" class="text-danger">Contact Preference is required</small>
+                    </div>
+                </div>
+        </div>
+        
+        <button [disabled] ="!theForm.valid" type="submit" class="btn btn-primary btn-sm" >Save</button>
+        <button type="button" class="btn btn-outline-dark mx-3 btn-sm" routerLink="/restaurants" >Cancel</button>
+      </form>
+  </div>

@@ -1,0 +1,23 @@
+
+<div class="card" @fade>
+    <a>
+        <img class="card-img-top" src="{{img}}" alt="{{title}}" title="{{title}}" (click)="onSelect(id)" /></a>
+            <div class="card-body">
+                <h4 class="card-title">{{title}}</h4>
+                <p class="price">{{price | currency:"USD"}}</p>
+            <p>{{description}}</p>                        
+            </div>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline" (click)="addToCart()"><i class="fas fa-cart-plus"></i></label>
+                <label class="btn btn-outline-secondary">
+                    <input 
+                    type="radio" 
+                    name="options" 
+                    id="option2" 
+                    autocomplete="off" 
+                    (click)="onSelect()" 
+                    (productUrltoParent)="productWasSelectedbyId($event)"> More info
+                </label>
+                </div>
+</div>
+ 

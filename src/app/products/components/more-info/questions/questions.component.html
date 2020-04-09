@@ -1,0 +1,71 @@
+<div>
+    <h2>Posts</h2>
+</div>
+<hr>
+<div class="container">
+        <form [formGroup]="postForm">
+            <div class="form-group">
+                <textarea 
+                    class="form-control my-2" 
+                    formControlName="post_title" 
+                    rows="1"
+                    placeholder="Post title"></textarea>
+                <textarea 
+                    class="form-control my-2" 
+                    formControlName="post_content" 
+                    rows="4"
+                    placeholder="Post content"></textarea>
+                <button 
+                    class="btn btn-outline btn-sm"
+                    (click)="addPost(post_id)"><i class="fas fa-comment"></i> Add</button>
+            </div>
+        </form>
+</div>
+<hr>
+<br><br>
+<div>
+    <div class="container" *ngFor="let user of currentUsers; let i = index">
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-fluid" [src]=" '../../../../../assets/questions/profile-' + i + '.jpg' "><br>
+            </div>
+            <div class="col-md-8" >
+                <small class="username">{{ user.name | uppercase }}</small>
+                <br><br>
+                <div *ngFor="let post of user?.posts">
+                    <h6>{{ post.title }}</h6>
+                    <h5>"{{ post.text }}"</h5><br>
+                    <div *ngFor="let comment of post?.comments">
+                        <!-- <p>{{ comment?.user?.name }}</p> -->
+                        <div class="row">
+                            <div class="col-md-11">
+                                <small class="createdAt">{{ comment?.createdAt | date }}</small>
+                                <p>{{ comment.text }}</p>
+                            </div>
+                            <div class="col-md-1">
+                                <button 
+                                    class="btn btn-outline-danger btn-sm" 
+                                    (click)="deleteComment(post.id,comment.id)" 
+                                    title="delet comment"><i class="far fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <form [formGroup]="commentForm">
+                        <div class="form-group">
+                            <textarea 
+                                class="form-control my-2" 
+                                formControlName="comment_content" 
+                                rows="2"
+                                placeholder="Type your comment"
+                                (keyup.enter)="createComment(post.id)"></textarea>
+                            <button 
+                                class="btn btn-outline btn-sm" 
+                                (click)="createComment(post.id)"><i class="fas fa-comment"></i> Comment</button>
+                        </div>
+                    </form>
+                </div>
+                <br><br><hr>
+            </div>
+        </div>
+    </div>
+</div>

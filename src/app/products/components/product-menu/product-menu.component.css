@@ -1,0 +1,17 @@
+li{
+    cursor: pointer;
+    list-style: none;
+    padding: 5px;
+    color:rgb(165, 165, 165);
+}
+li:hover{
+    list-style: none;
+    padding: 5px;
+    color:black;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    padding-left: 0;
+}

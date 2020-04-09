@@ -1,0 +1,18 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <app-quick-shop (searchToParent)="searchToParentToChild($event)" class="quickShop"></app-quick-shop>
+            <app-product-menu (productUrltoParent)="productWasSelected($event)"
+                              (resetAllProducts)="resetProducts($event)"
+                              class="productMenu"
+            ></app-product-menu>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div>
+                   <app-product-empty-page [selecteProducts]='showedProducts'></app-product-empty-page>
+            </div>
+        </div>
+    </div>
+</div>

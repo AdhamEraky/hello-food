@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+          <div class="">
+                <div class="table100 ver2 m-b-110">
+                  <div class="table100-head">
+                    <table>
+                      <thead>
+                        <tr class="row100 head">
+                          <th class="cell100 column1">ID</th>
+                          <th class="cell100 column2">Product</th>
+                          <th class="cell100 column3">Price</th>
+                          <th class="cell100 column4">Amount</th>
+                          <th class="cell100 column5">Edit</th>
+                        </tr>
+                      </thead>
+                    </table>
+                  </div>
+                  <div class="table100-body js-pscroll">
+                    <table>
+                      <tbody *ngFor="let product of cartItems">                        
+                        <tr class="row100 body">
+                          <td class="cell100 column1">{{product.id}}</td>
+                          <td class="cell100 column2">{{product.title}}</td>
+                          <td class="cell100 column3">{{product.price | currency:"USD"}}</td>
+                          <td class="cell100 column4"><input 
+                            type="number"
+                            value="1"></td>
+                          <td class="cell100 column5"><button 
+                            class="mx-4 btn btn-danger btn-sm" 
+                            (click)="removeItem(product.id)"><small>Remove</small></button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div
+          (clearAllCart)="clearCart($event)"
+          ><button 
+                class="btn btn-outline-success my-1" 
+                routerLink="/check-out">Check Out</button><br>
+            <button 
+                class="btn btn-outline-dark my-1" 
+                routerLink="/product">Continue Shopping</button><br>
+            <button
+                class="btn btn-outline-danger my-1" 
+                (click)="clearData()">Clear Cart</button></div>
+            
+        </div>
+            <!-- <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let product of cartItems">
+                  <tr>
+                    <th scope="row">{{product.id}}</th>
+                    <td>{{product.title}}</td>
+                    <td>{{product.price | currency:"USD"}}</td>
+                    <td><input 
+                            type="number"
+                            value="1"> <button 
+                                          class="mx-4 btn btn-danger btn-sm" 
+                                          (click)="removeItem(product.id)"><small>Remove</small></button></td>
+                  </tr>
+                </tbody>
+                <tr>
+                  <th colspan="2">Total</th>
+                  <td colspan="2">{{total | currency:"USD" }}</td>
+                </tr>
+              </table> -->
+        
+        
+    </div>
+
+    
+</div>
