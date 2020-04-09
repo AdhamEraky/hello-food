@@ -28,7 +28,6 @@ import { Title } from '@angular/platform-browser';
 
 export class AppComponent {
     currentUser: User;
-    spinner = true;
 
     constructor(
         private titleService : Title,
